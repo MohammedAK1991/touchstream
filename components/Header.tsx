@@ -5,9 +5,10 @@ import {
   Input,
   IconButton,
   InputGroup,
-  InputRightElement,
+  InputRightAddon,
 } from '@chakra-ui/react';
-import { Search2Icon, HamburgerIcon } from '@chakra-ui/icons';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
 
 export default function Header({
@@ -30,9 +31,7 @@ export default function Header({
             background="none"
             aria-label="Toggle sidebar"
             mr={4}
-            icon={
-              <HamburgerIcon as="button" boxSize={6} onClick={toggleSidebar} />
-            }
+            icon={<MenuIcon onClick={toggleSidebar} />}
           />
 
           <Heading
@@ -46,11 +45,11 @@ export default function Header({
           </Heading>
         </Flex>
       </Link>
-      <InputGroup size="md" mx={4}>
+      <InputGroup size="md" ml={6}>
         <Input placeholder="Search for vidoes on youtube here" />
-        <InputRightElement>
-          <Search2Icon />
-        </InputRightElement>
+        <InputRightAddon>
+          <SearchIcon />
+        </InputRightAddon>
       </InputGroup>
     </Flex>
   );
