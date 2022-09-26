@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { Flex, Stack, Box } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import Header from '../components/Header';
 import SideBar from '../components/SideBar';
+import MostPopular from '../components/MostPopular';
 
 const Home = () => {
   const [toggleSideBar, setToggleSidebar] = useState(true);
+
   return (
     <Box h="100vh" w="100vw" bg="white" display="flex" flexDirection="column">
       <Head>
@@ -15,7 +17,10 @@ const Home = () => {
       </Head>
 
       <Header toggleSidebar={() => setToggleSidebar(!toggleSideBar)} />
-      <SideBar isOpen={toggleSideBar} />
+      <Flex h="full">
+        <SideBar isOpen={toggleSideBar} />
+        <MostPopular />
+      </Flex>
     </Box>
   );
 };
