@@ -45,7 +45,7 @@ export default function MostPopular() {
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=6&regionCode=ES&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=ES&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,
       )
       .then((response) => {
         createVideoCards(response.data.items);
