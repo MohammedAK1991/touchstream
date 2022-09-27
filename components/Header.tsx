@@ -10,12 +10,16 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Header({
   toggleSidebar,
 }: {
   toggleSidebar: () => void;
 }) {
+  const router = useRouter();
+  const [inputSearch, setInputSearch] = useState('');
+
   return (
     <Flex
       borderWidth="1px"
@@ -46,9 +50,13 @@ export default function Header({
         </Flex>
       </Link>
       <InputGroup size="md" ml={6}>
-        <Input placeholder="Search for vidoes on youtube here" />
+        <Input
+          placeholder="Search for vidoes on youtube here"
+          onChange={(e) => setInputSearch(e.target.value)}
+          value={inputSearch}
+        />
         <InputRightAddon>
-          <SearchIcon />
+          <SearchIcon onClick={() => router.push(`/search/${inputSearch}`)} />
         </InputRightAddon>
       </InputGroup>
     </Flex>
