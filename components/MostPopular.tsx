@@ -67,6 +67,7 @@ export default function MostPopular() {
         {videoCards.map((item) => {
           return (
             <VideoCard
+              id={item.videoId}
               key={item.videoId}
               title={item.title}
               image={item.image}

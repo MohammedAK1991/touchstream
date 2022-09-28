@@ -1,14 +1,17 @@
+import { useCallback } from 'react';
 import {
   Box,
   Image,
   Avatar,
-  Heading,
   Text,
   Flex,
   Stack,
+  useDisclosure,
 } from '@chakra-ui/react';
+import VideoPlayerModal from './VideoPlayerModal';
 
 export default function VideoCard({
+  id,
   image,
   title,
   channel,
@@ -16,6 +19,7 @@ export default function VideoCard({
   timestamp,
   channelImage,
 }: {
+  id: string;
   image: string;
   title: string;
   channel: string;
@@ -23,8 +27,18 @@ export default function VideoCard({
   timestamp: string;
   channelImage: string;
 }) {
+  const {
+    isOpen: isOpenVideoPlayer,
+    onOpen: onOpenVideoPlayerModal,
+    onClose: onCloseVideoPlayer,
+  } = useDisclosure();
+
+  const handleClickOnVideo = useCallback(() => {
+    onOpenVideoPlayerModal();
+  }, [onOpenVideoPlayerModal]);
+
   return (
-    <Flex w="100vw" mb="1" p="4">
+    <Flex w="100vw" mb="1" p="4" cursor="pointer" onClick={handleClickOnVideo}>
       <Image src={image} alt="" mr="4" flexShrink={0} />
       <Box p="2">
         <Stack mt={2} spacing={2}>
@@ -41,6 +55,11 @@ export default function VideoCard({
           <Text></Text>
         </Stack>
       </Box>
+      <VideoPlayerModal
+        videoId={id}
+        onClose={onCloseVideoPlayer}
+        isOpen={isOpenVideoPlayer}
+      />
     </Flex>
   );
 }

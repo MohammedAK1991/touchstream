@@ -71,6 +71,7 @@ export default function SearchResults() {
         {videoRows.map((item) => {
           return (
             <VideoRow
+              id={item.videoId}
               key={item.id}
               title={item.title}
               image={item.image}

@@ -20,7 +20,7 @@ export default function SideBarRow({
   return (
     <Flex
       px="4"
-      py="2"
+      py="4"
       my={1}
       justify="flex-start"
       align="center"
@@ -29,7 +29,7 @@ export default function SideBarRow({
     >
       <Icon />
       {title ? (
-        <Text fontSize="sm" ml={6} pr={8}>
+        <Text fontSize="sm" ml={6} pr={16}>
           {title}
         </Text>
       ) : null}

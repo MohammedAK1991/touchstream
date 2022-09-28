@@ -8,13 +8,12 @@ import SideBarRow from './SideBarRow';
 
 export default function SideBar({ isOpen }: { isOpen: boolean }) {
   return (
-    <Stack width="fit-content" h="full" shadow="md" mt="-1">
+    <Stack shadow="md" height="100vh" bg="white">
       {isOpen ? (
         <Box>
           <SideBarRow Icon={HomeIcon} title="Home" />
           <SideBarRow Icon={MusicVideoIcon} title="Music" />
           <SideBarRow Icon={NewspaperIcon} title="News" />
-          <Divider />
           <SideBarRow Icon={TheatersIcon} title="Movies" />
           <SideBarRow Icon={EmojiEventsIcon} title="Sports" />
         </Box>
