@@ -61,7 +61,7 @@ export default function MostPopular() {
     return <Text p={4}>No Results found!</Text>;
   }
   return (
-    <Box w="full" overflowY="scroll" overflowX="hidden" p="2">
+    <Box overflowY="scroll" overflowX="hidden" p="2">
       {isLoading ? <CircularProgress color="secondary" /> : null}
       <Box>
         {videoCards.map((item) => {

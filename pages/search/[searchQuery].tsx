@@ -67,9 +67,7 @@ export default function SearchResults() {
         {isLoading ? (
           <CircularProgress className="loading" color="secondary" />
         ) : null}
-        <hr />
 
-        <hr />
         {videoRows.map((item) => {
           return (
             <VideoRow

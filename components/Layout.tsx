@@ -10,7 +10,7 @@ import SideBar from './SideBar';
 function Layout({ children }: { children: React.ReactNode }) {
   const [toggleSideBar, setToggleSidebar] = useState(true);
   return (
-    <Box h="100vh" w="100vw" bg="white" display="flex" flexDirection="column">
+    <Flex h="100vh" flexDirection="column">
       <Head>
         <title>Touch stream video player</title>
         <meta name="description" content="Calllypso coding assignemt" />
@@ -22,7 +22,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         <SideBar isOpen={toggleSideBar} />
         {children}
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 

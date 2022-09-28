@@ -28,11 +28,9 @@ export default function VideoCard({
       <Image src={image} alt="" mr="4" flexShrink={0} />
       <Box p="2">
         <Stack mt={2} spacing={2}>
-          <Flex>
-            <Heading fontSize="lg" fontFamily="verdana" fontWeight="semithin">
-              {title}
-            </Heading>
-          </Flex>
+          <Text fontSize="lg" noOfLines={1} fontFamily="verdana">
+            {title}
+          </Text>
           <Flex justify="flex-start" align="center">
             <Avatar name={channel} src={channelImage} boxSize={8} mr={2} />
             <Text>{channel}</Text>
