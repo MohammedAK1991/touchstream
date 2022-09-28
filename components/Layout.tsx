@@ -20,7 +20,9 @@ function Layout({ children }: { children: React.ReactNode }) {
       <Header toggleSidebar={() => setToggleSidebar(!toggleSideBar)} />
       <Flex h="full">
         <SideBar isOpen={toggleSideBar} />
-        {children}
+        <Flex overflowX="hidden" mt={12}>
+          {children}
+        </Flex>
       </Flex>
     </Flex>
   );
