@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
-import { CircularProgress, Box, Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
+import LoadingSpinner from './LoadingSpinner';
 import dayjs from 'dayjs';
 import VideoCard from './VideoCard';
 
@@ -54,15 +55,24 @@ export default function MostPopular() {
       .catch((error) => {
         console.log(error);
         setIsError(true);
+        setIsLoading(false);
       });
   }, []);
 
-  if (isError) {
-    return <Text p={4}>No Results found!</Text>;
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
+
+  if (isError) {
+    return (
+      <Text px={4} pt={5}>
+        No Results found!
+      </Text>
+    );
+  }
+
   return (
     <Box overflowY="scroll" overflowX="hidden" p="2">
-      {isLoading ? <CircularProgress color="secondary" /> : null}
       <Box>
         {videoCards.map((item) => {
           return (

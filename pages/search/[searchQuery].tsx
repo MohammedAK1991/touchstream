@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
-import { Box, CircularProgress, Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import Layout from '../../components/Layout';
 import React, { useState, useEffect } from 'react';
 import VideoRow from '../../components/VideoRow';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 export default function SearchResults() {
   const router = useRouter();
@@ -57,16 +58,12 @@ export default function SearchResults() {
     setVideoRows(newVideoRows);
     setIsLoading(false);
   }
-  if (isError) {
-    return <Text>No Results found!</Text>;
-  }
 
   return (
     <Layout>
       <Box w="full" overflowY="scroll" overflowX="hidden" p="4">
-        {isLoading ? (
-          <CircularProgress className="loading" color="secondary" />
-        ) : null}
+        {isLoading ? <LoadingSpinner /> : null}
+        {isError ? <Text m={1}>No Results found!</Text> : null}
 
         {videoRows.map((item) => {
           return (
