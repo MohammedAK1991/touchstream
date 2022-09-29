@@ -1,69 +1,17 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import LoadingSpinner from './LoadingSpinner';
-import dayjs from 'dayjs';
 import VideoCard from './VideoCard';
+import useMostPopularVideos from '../data/mostPopularVideos';
 
 export default function MostPopular() {
-  const [videoCards, setVideoCards] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const { mostPopularVideos, loading, error } = useMostPopularVideos();
 
-  async function createVideoCards(videoItems: any[]) {
-    let newVideoCards = [];
-    for (const video of videoItems) {
-      const videoId = video.id;
-      const snippet = video.snippet;
-      const channelId = snippet.channelId;
-      const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,
-      );
-      const channelImage = response.data.items[0].snippet.thumbnails.medium.url;
-
-      const title = snippet.title;
-      const image = snippet.thumbnails.medium.url;
-      const views = video.statistics.viewCount;
-      const timestamp = dayjs(snippet.publishedAt).format('DD/MM/YYYY');
-      const channel = snippet.channelTitle;
-      const description = snippet.description;
-
-      newVideoCards.push({
-        videoId,
-        image,
-        title,
-        channel,
-        views,
-        timestamp,
-        channelImage,
-        description,
-      });
-    }
-    setVideoCards(newVideoCards);
-    setIsLoading(false);
-  }
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=ES&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,
-      )
-      .then((response) => {
-        createVideoCards(response.data.items);
-        setIsError(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-        setIsLoading(false);
-      });
-  }, []);
-
-  if (isLoading) {
+  if (loading) {
     return <LoadingSpinner />;
   }
 
-  if (isError) {
+  if (error) {
     return (
       <Text px={4} pt={5}>
         No Results found!
@@ -74,20 +22,30 @@ export default function MostPopular() {
   return (
     <Box overflowY="scroll" overflowX="hidden" p="2">
       <Box>
-        {videoCards.map((item) => {
-          return (
-            <VideoCard
-              id={item.videoId}
-              key={item.videoId}
-              title={item.title}
-              image={item.image}
-              views={item.views}
-              timestamp={item.timestamp}
-              channel={item.channel}
-              channelImage={item.channelImage}
-            />
-          );
-        })}
+        {mostPopularVideos.map(
+          (item: {
+            videoId: React.Key | null | undefined;
+            title: string;
+            image: string;
+            views: string;
+            timestamp: string;
+            channel: string;
+            channelImage: string;
+          }) => {
+            return (
+              <VideoCard
+                id={item.videoId as string}
+                key={item.videoId}
+                title={item.title}
+                image={item.image}
+                views={item.views}
+                timestamp={item.timestamp}
+                channel={item.channel}
+                channelImage={item.channelImage}
+              />
+            );
+          },
+        )}
       </Box>
     </Box>
   );
