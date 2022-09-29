@@ -47,7 +47,6 @@ export default function useVideosBySearchQuery(searchQuery: string): {
           `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&type=video&q=${searchQuery}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,
         )
         .then((response) => {
-          console.log({response})
           createVideoRows(response?.data?.items).then((res) => setVideoCards(res) )
           setError(false);
         })

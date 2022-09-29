@@ -51,7 +51,6 @@ export default function useMostPopularVideos(): {
           `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=ES&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,
         )
         .then((response) => {
-          console.log({response})
           createVideoCards(response?.data?.items).then((res) => setVideoCards(res) )
           setError(false);
         })
