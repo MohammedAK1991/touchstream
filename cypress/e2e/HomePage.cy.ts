@@ -1,4 +1,3 @@
-/* eslint-disable */
 describe('The Home Page', () => {
   it('successfully loads', () => {
     cy.visit('http://localhost:3000')
@@ -25,3 +24,4 @@ describe('The Home Page', () => {
 
 
 })
+export {}

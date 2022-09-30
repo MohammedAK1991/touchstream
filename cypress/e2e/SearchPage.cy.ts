@@ -1,4 +1,3 @@
-/* eslint-disable */
 describe('Request', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
@@ -17,5 +16,6 @@ describe('Request', () => {
     .type('{enter}')
       .get('.video-row')
   })
-
 })
+
+export {}
