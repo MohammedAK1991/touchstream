@@ -37,7 +37,14 @@ export default function VideoRow({
   }, [onOpenVideoPlayerModal]);
 
   return (
-    <Flex w="100vw" mb="1" p="4" cursor="pointer" onClick={handleClickOnVideo}>
+    <Flex
+      className="video-row"
+      w="100vw"
+      mb="1"
+      p="4"
+      cursor="pointer"
+      onClick={handleClickOnVideo}
+    >
       <Image src={image} alt="" mr="4" flexShrink={0} />
       <Stack mt={2} spacing={2}>
         <Heading noOfLines={2} fontSize="md">

@@ -38,7 +38,14 @@ export default function VideoCard({
   }, [onOpenVideoPlayerModal]);
 
   return (
-    <Flex w="100vw" mb="1" p="4" cursor="pointer" onClick={handleClickOnVideo}>
+    <Flex
+      className="most-popular"
+      w="100vw"
+      mb="1"
+      p="4"
+      cursor="pointer"
+      onClick={handleClickOnVideo}
+    >
       <Image src={image} alt="" mr="4" flexShrink={0} />
       <Box p="2">
         <Stack mt={2} spacing={2}>
