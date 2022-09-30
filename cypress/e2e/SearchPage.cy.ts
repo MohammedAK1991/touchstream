@@ -1,3 +1,4 @@
+/* eslint-disable */
 describe('Request', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
