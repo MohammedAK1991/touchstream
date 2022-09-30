@@ -1,4 +1,4 @@
-import { Stack, Box, Divider } from '@chakra-ui/react';
+import { Stack, Box } from '@chakra-ui/react';
 import HomeIcon from '@mui/icons-material/Home';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import TheatersIcon from '@mui/icons-material/Theaters';
