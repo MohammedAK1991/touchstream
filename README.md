@@ -34,7 +34,8 @@ npm run cypress:open
 ```
 ## API Keys
 
-For this demo to work, we have to first create the necessary credentials (API KEY) to access the API. Sign in to your preferred Google account and go to [this link](https://console.developers.google.com/apis/library/youtube.googleapis.com)
+For this demo to work, we have to first create the necessary credentials (API KEY) to access the API. Sign in to your preferred Google account and go to [this link](https://console.developers.google.com/apis/library/youtube.googleapis.com).
+
 Follow [this tutorial](https://blog.hubspot.com/website/how-to-get-youtube-api-key) for detailed instructions.
 This API key must be in the .env.local file `NEXT_PUBLIC_YOUTUBE_API_KEY`.
 
