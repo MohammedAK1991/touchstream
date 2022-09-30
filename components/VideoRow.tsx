@@ -51,9 +51,9 @@ export default function VideoRow({
           {title}
         </Heading>
         <Text>{channel}</Text>
-        <Text>
+        <>
           {views} views • {timestamp}
-        </Text>
+        </>
         <Text>{description}</Text>
       </Stack>
       <VideoPlayerModal

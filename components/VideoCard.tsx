@@ -59,7 +59,6 @@ export default function VideoCard({
           <Text>
             {views} views • {timestamp}
           </Text>
-          <Text></Text>
         </Stack>
       </Box>
       <VideoPlayerModal
