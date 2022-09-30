@@ -8,7 +8,7 @@ import SideBarRow from './SideBarRow';
 
 export default function SideBar({ isOpen }: { isOpen: boolean }) {
   return (
-    <Stack shadow="md" height="100vh" bg="white" mt={-2}>
+    <Stack shadow="md" height="100vh" bg="white" mt="50px">
       {isOpen ? (
         <Box>
           <SideBarRow Icon={HomeIcon} title="Home" />

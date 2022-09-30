@@ -23,6 +23,7 @@ export default function Header({
 
   const handleSearchSumit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
+      if (!inputSearch) return;
       event.preventDefault();
       router.push(`/search/${inputSearch}`);
     },
@@ -31,6 +32,7 @@ export default function Header({
 
   return (
     <Flex
+      className="header"
       zIndex={10}
       position="fixed"
       w="100%"
@@ -66,12 +68,16 @@ export default function Header({
       <chakra.form onSubmit={handleSearchSumit} w="full">
         <InputGroup size="md" ml={4} pr={8}>
           <Input
+            autoFocus
             placeholder="Search for vidoes on youtube here"
             onChange={(e) => setInputSearch(e.target.value)}
             value={inputSearch}
           />
           <InputRightAddon cursor="pointer">
             <IconButton
+              w="full"
+              _hover={{ bg: 'inherit' }}
+              disabled={!inputSearch}
               aria-label="Search database"
               type="submit"
               icon={<SearchIcon />}
