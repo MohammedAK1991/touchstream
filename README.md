@@ -41,6 +41,7 @@ This API key must be in the .env.local file `NEXT_PUBLIC_YOUTUBE_API_KEY`.
 
 ### Room for improvement
 * Extensive testing (>70% Coverage) with Jest and Jasmine
+* Containerize the app with docker
 * Complete responsiveness on mobile platforms for all screen sizes
 * Implement autocomplete when searching for videos
 * Add authentication and authorization
